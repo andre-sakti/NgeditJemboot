@@ -9,6 +9,7 @@ Blue="\033[0;34m"
 green='\033[0;32m'
 grenbo="\e[92;1m"
 YELL='\033[0;33m'
+IWhite='\033[0;97m'       # White
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
@@ -143,24 +144,24 @@ ssk=$(cat /etc/shadowsocks/.shadowsocks.db | wc -l)
 sssh=$(cat /etc/ssh/.ssh.db | wc -l)
 echo -e " "
 echo -e " ${IPurple}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${IPurple}│$NC\033[41m                    SYSTEM INFORMATION                    $NC${IPurple}│$NC"
+echo -e " ${IPurple}│$IWhite\033[41m                    SYSTEM INFORMATION                    $IWhite${IPurple}│$IWhite"
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e " ${IPurple}╭══════════════════════════════════════════════════════════╮${NC}"
 echo -e " ${IPurple}│$NC System OS${NC}     $IPurple=$NC $MODEL${NC}"
 echo -e " ${IPurple}│$NC IP VPS${NC}        $IPurple=$NC $IPVPS${NC}"
 echo -e " ${IPurple}│$NC Domain${NC}        $IPurple=$NC $domain${NC}"
-echo -e " ${IPurple}│$NC Expiry script${NC} $IPurple=$green $certifacate ${NC}days"
+echo -e " ${IPurple}│$NC Expiry script${NC} $IPurple=$green $certifacate ${NC}Days"
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e "         SSH : $status_ssh" "         NGINX : $status_nginx" "         XRAY : $status_xray         $NC" 
 echo -e " ${IPurple}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${IPurple}│"
+echo -e " ${IPurple}│                                                          │"
 echo -e " ${IPurple}│$NC [${green}01${NC}] SSH MENU     ${IPurple}│$NC [${green}07${NC}] DELL ALL EXP ${IPurple}│$NC [${green}13${NC}] BCKP/RSTR   $NC${IPurple}│$NC" 
 echo -e " ${IPurple}│$NC [${green}02${NC}] VMESS MENU   ${IPurple}│$NC [${green}08${NC}] AUTOREBOOT  ${IPurple} │$NC [${green}14${NC}] REBOOT      $NC${IPurple}│$NC"    
 echo -e " ${IPurple}│$NC [${green}03${NC}] VLESS MENU   ${IPurple}│$NC [${green}09${NC}] INFO PORT   ${IPurple} │$NC [${green}15${NC}] RESTART     $NC${IPurple}│$NC"   
 echo -e " ${IPurple}│$NC [${green}04${NC}] TROJAN MENU  ${IPurple}│$NC [${green}10${NC}] SPEEDTEST   ${IPurple} │$NC [${green}16${NC}] DOMAIN      $NC${IPurple}│$NC" 
 echo -e " ${IPurple}│$NC [${green}05${NC}] SHADOW MENU  ${IPurple}│$NC [${green}11${NC}] RUNNING     ${IPurple} │$NC [${green}17${NC}] CERT SSL    $NC${IPurple}│$NC"
 echo -e " ${IPurple}│$NC [${green}06${NC}] TRIAL MENU   ${IPurple}│$NC [${green}12${NC}] CLEAR LOG   ${IPurple} │ $NC[${green}18${NC}] CLEAR CACHE$NC${IPurple} │$NC"
-echo -e " ${IPurple}│"
+echo -e " ${IPurple}│                                                          │"
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e "               SSH = $sssh" "  VMESS = $vm"  " VLESS = $vll"
 echo -e "                 TROJAN = $trr" "SHADOWSICKS = $ssk"
