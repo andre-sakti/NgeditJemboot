@@ -504,9 +504,9 @@ fi
 
 
 # STATUS EXPIRED ACTIVE
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
-Info="${Green_font_prefix}(Registered)${Font_color_suffix}"
-Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
+#Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
+#Info="${Green_font_prefix}(Registered)${Font_color_suffix}"
+#Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
 
 #today=$(date -d "0 days" +"%Y-%m-%d")
 #Exp21=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
@@ -514,7 +514,7 @@ Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font
 #    sts="${Info}"
 #else
 #    sts="${Error}"
-fi
+#fi
 echo -e "\e[32mloading...\e[0m"
 # CERTIFICATE STATUS
 d1=$(date -d "$valid" +%s)
