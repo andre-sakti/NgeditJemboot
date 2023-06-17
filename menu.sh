@@ -448,42 +448,6 @@ tram=$(free -m | awk 'NR==2 {print $2}')
 uram=$(free -m | awk 'NR==2 {print $3}')
 fram=$(free -m | awk 'NR==2 {print $4}')
 clear
-# OS Uptime
-uptime="$(uptime -p | cut -d " " -f 2-10)"
-# USERNAME
-rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $2}')
-echo "$username" >/usr/bin/user
-# Order ID
-rm -f /usr/bin/ver
-user=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $3}')
-echo "$user" >/usr/bin/ver
-# validity
-rm -f /usr/bin/e
-valid=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
-echo "$valid" >/usr/bin/e
-# DETAIL ORDER
-username=$(cat /usr/bin/user)
-oid=$(cat /usr/bin/ver)
-exp=$(cat /usr/bin/e)
-clear
-version=$(cat /home/ver)
-ver=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf )
-clear
-# CEK UPDATE
-Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
-Info1="${Green_font_prefix}$version${Font_color_suffix}"
-Info2="${Green_font_prefix} Latest Version ${Font_color_suffix}"
-Error=" Version ${Green_font_prefix}[$ver]${Font_color_suffix} Available${Red_font_prefix}[Update]${Font_color_suffix}"
-version=$(cat /home/ver)
-new_version=$( curl https://raw.githubusercontent.com/${GitUser}/version/main/version.conf | grep $version )
-#Status Version
-if [ $version = $new_version ]; then
-stl="${Info2}"
-else
-stl="${Error}"
-fi
-clear
 # Getting CPU Information
 vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
 vnstat -i ${vnstat_profile} >/root/t1
@@ -542,12 +506,12 @@ Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_p
 Info="${Green_font_prefix}(Registered)${Font_color_suffix}"
 Error="${Green_font_prefix}${Font_color_suffix}${Red_font_prefix}[EXPIRED]${Font_color_suffix}"
 
-today=$(date -d "0 days" +"%Y-%m-%d")
-Exp1=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
-if [[ $today < $Exp1 ]]; then
-    sts="${Info}"
-else
-    sts="${Error}"
+#today=$(date -d "0 days" +"%Y-%m-%d")
+#Exp21=$(curl https://raw.githubusercontent.com/${GitUser}/allow/main/ipvps.conf | grep $MYIP | awk '{print $4}')
+#if [[ $today < $Exp21 ]]; then
+#    sts="${Info}"
+#else
+#    sts="${Error}"
 fi
 echo -e "\e[32mloading...\e[0m"
 # CERTIFICATE STATUS
@@ -629,7 +593,7 @@ echo -e "  \e[$yy Order ID             :$xz $username $xz"
 #echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        :$stl"
-echo -e "  $yy Expired Status       :$exp $sts $wh" #| lolcat
+echo -e "  $yy Expired Status       :$Exp $sts $wh" #| lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$yy     Traffic        Today       Yesterday      Month   $yy"
 echo -e "   \e[$text   Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
@@ -638,9 +602,9 @@ echo -e "   \e[$text   Total${NC}      \e[${text}  $todayd $today_v     $yesterd
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 #echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m" 
 echo -e "                        $BOLD $UNDERLINE LIST ACCOUNTS " | lolcat
-echo -e " \e[$yy      SSH      Vmess     Vless    Trojan-Ws   SOCK-WS        "  
-echo -e " \e[$below       $sssh         $vm         $vll         $trr          $ssk            \e[0m "
-echo -e " \e[$yy    Account   Account    Account   Account   Account$yy "  
+echo -e " \e[$yy        SSH      Vmess     Vless    Trojan-Ws   SOCK-WS        "  
+echo -e " \e[$below         $sssh         $vm         $vll         $trr          $ssk            \e[0m "
+echo -e " \e[$yy      Account   Account   Account    Account    Account$yy "  
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 #echo -e "  \e[   $yyExpired Status :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
