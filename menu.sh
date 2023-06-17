@@ -1,7 +1,7 @@
 #!/bin/bash
 # COLOR VALIDATION
 clear
-
+function xmenu(){
 RED='\033[0;31m'
 NC='\033[0m'
 gray="\e[1;30m"
@@ -62,7 +62,7 @@ sts="${Info}"
 else
 sts="${Error}"
 fi
-function xmenu(){
+
 echo -e "\e[32mloading...\e[0m"
 clear
 
@@ -256,46 +256,101 @@ clear
 clearcache
 ;;
 esac
-
 read -n 1 -s -r -p "Press any key to back on menu"
 
 menu
 }
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-echo -e "\e[32mloading...\e[0m"
-clear
-# Valid Script
-VALIDITY () {
-    today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl https://raw.githubusercontent.com/andre-sakti/kintil/main/ip | grep $MYIP | awk '{print $4}')
-    if [[ $today < $Exp1 ]]; then
-    echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
-    else
-echo -e "${Lyellow}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo -e "${Lred}                PERMISSION DENIED ! ${NC}"
-echo -e "${Lyellow}     Your VPS ${NC}( ${green}$MYIP${NC} ) ${Lyellow}Has been Banned "
-echo -e "         Buy access permissions for scripts "
-echo -e "                 Contact Admin :"
-echo -e "             ${green}Telegram t.me/Andresakti "
-echo -e "             WhatsApp wa.me/081282840785"
-echo -e "${Lyellow}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    exit 0
-fi
-}
-IZIN=$(curl https://raw.githubusercontent.com/andre-sakti/kintil/main/ip | awk '{print $5}' | grep $MYIP)
-if [ $MYIP = $IZIN ]; then
-echo -e "\e[32mPermission Accepted...\e[0m" >/dev/null 2>&1
-VALIDITY
-else
-echo -e "\e[31mPermission Denied!\e[0m";
-echo -e "\e[31mPlease buy script first\e[0m"
-exit 0
-fi
-echo -e "\e[32mloading...\e[0m"
-clear
-#Domain
+RED='\033[0;31m'
+NC='\033[0m'
+gray="\e[1;30m"
+Blue="\033[0;34m"
+green='\033[0;32m'
+grenbo="\e[92;1m"
+YELL='\033[0;33m'
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+IPVPS=$(curl -s ipv4.icanhazip.com)
 domain=$(cat /etc/xray/domain)
+RAM=$(free -m | awk 'NR==2 {print $2}')
+USAGERAM=$(free -m | awk 'NR==2 {print $3}')
+MEMOFREE=$(printf '%-1s' "$(free -m | awk 'NR==2{printf "%.2f%%", $3*100/$2 }')")
+LOADCPU=$(printf '%-0.00001s' "$(top -bn1 | awk '/Cpu/ { cpu = "" 100 - $8 "%" }; END { print cpu }')")
+MODEL=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
+CORE=$(printf '%-1s' "$(grep -c cpu[0-9] /proc/stat)")
+DATEVPS=$(date +'%d/%m/%Y')
+TIMEZONE=$(printf '%(%H:%M:%S)T')
+SERONLINE=$(uptime -p | cut -d " " -f 2-10000)
+clear
+MYIP=$(curl -sS ipv4.icanhazip.com)
+echo ""
+#########################
+# USERNAME
+rm -f /usr/bin/user
+username=$(curl https://raw.githubusercontent.com/andre-sakti/kintil/main/ip | grep $MYIP | awk '{print $2}')
+echo "$username" >/usr/bin/user
+# validity
+rm -f /usr/bin/e
+valid=$(curl https://raw.githubusercontent.com/andre-sakti/kintil/main/ip | grep $MYIP | awk '{print $4}')
+echo "$valid" >/usr/bin/e
+# DETAIL ORDER
+username=$(cat /usr/bin/user)
+oid=$(cat /usr/bin/ver)
+exp=$(cat /usr/bin/e)
+clear
+# CERTIFICATE STATUS
+d1=$(date -d "$valid" +%s)
+d2=$(date -d "$today" +%s)
+certifacate=$(((d1 - d2) / 86400))
+# VPS Information
+DATE=$(date +'%Y-%m-%d')
+datediff() {
+    d1=$(date -d "$1" +%s)
+    d2=$(date -d "$2" +%s)
+    echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
+}
+mai="datediff "$Exp" "$DATE""
+
+# Status ExpiRED Active | AndreSakti
+Info="(${green}Active${NC})"
+Error="(${RED}ExpiRED${NC})"
+today=`date -d "0 days" +"%Y-%m-%d"`
+Exp1=$(curl https://raw.githubusercontent.com/andre-sakti/kintil/main/ip | grep $MYIP | awk '{print $4}')
+if [[ $today < $Exp1 ]]; then
+sts="${Info}"
+else
+sts="${Error}"
+fi
+
+echo -e "\e[32mloading...\e[0m"
+clear
+
+# OS Uptime
+uptime="$(uptime -p | cut -d " " -f 2-10)"
+
+# Getting CPU Information | AndreSakti
+cpu_usage1="$(ps aux | awk 'BEGIN {sum=0} {sum+=$3}; END {print sum}')"
+cpu_usage="$((${cpu_usage1/\.*} / ${coREDiilik:-1}))"
+cpu_usage+=" %"
+ISP=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 )
+CITY=$(curl -s ipinfo.io/city )
+WKT=$(curl -s ipinfo.io/timezone )
+DAY=$(date +%A)
+DATE=$(date +%m/%d/%Y)
+DATE2=$(date -R | cut -d " " -f -5)
+IPVPS=$(curl -s ipinfo.io/ip )
+cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
+cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
+tram=$( free -m | awk 'NR==2 {print $2}' )
+uram=$( free -m | awk 'NR==2 {print $3}' )
+fram=$( free -m | awk 'NR==2 {print $4}' )
+clear
+ssh_service=$(/etc/init.d/ssh status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+dropbear_service=$(/etc/init.d/dropbear status | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+haproxy_service=$(systemctl status haproxy | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+xray_service=$(systemctl status xray | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+nginx_service=$(systemctl status nginx | grep Active | awk '{print $3}' | cut -d "(" -f2 | cut -d ")" -f1)
+#Status | AndreSakti
 clear
 is_root() {
     if [ 0 == $UID ]; then
@@ -308,6 +363,55 @@ is_root() {
     fi
 }
 clear
+#BIBlack='\033[1;90m'      # Black
+BIRed='\033[1;91m'        # Red
+BIGreen='\033[1;92m'      # Green
+BIYellow='\033[1;93m'     # Yellow
+#BIBlue='\033[1;94m'       # Blue
+#BIPurple='\033[1;95m'     # Purple
+#BICyan='\033[1;96m'       # Cyan
+BICyan='\033[1;97m'      # White
+Uwhite='\033[4;37m'       # White
+On_IPurple='\033[0;105m'  #
+On_IRed='\033[0;101m'
+IBlack='\033[0;90m'       # Black
+IRed='\033[0;91m'         # Red
+IGreen='\033[0;92m'       # Green
+IYellow='\033[0;93m'      # Yellow
+IBlue='\033[0;94m'        # Blue
+IPurple='\033[0;95m'      # Purple
+ICyan='\033[0;96m'        # Cyan
+IWhite='\033[0;97m'       # White
+NC='\e[0m'
+
+# // Exporting Language to UTF-8
+
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
+
+
+# // Export Color & Information
+export m="\033[0;1;31m"
+export y="\033[0;1;34m"
+export yy="\033[0;1;36m"
+export yl="\033[0;1;37m"
+export wh="\033[0;1;33m"
+export xz="\033[0;1;35m"
+export gr="\033[0;1;32m"
+
+# // Export Banner Status Information
+export EROR="[${RED} EROR ${NC}]"
+export INFO="[${YELLOW} INFO ${NC}]"
+export OKEY="[${GREEN} OKEY ${NC}]"
+export PENDING="[${YELLOW} PENDING ${NC}]"
+export SEND="[${YELLOW} SEND ${NC}]"
+export RECEIVE="[${YELLOW} RECEIVE ${NC}]"
+
+# // Export Align
+export BOLD="\e[1m"
+export WARNING="${RED}\e[5m"
+export UNDERLINE="\e[4m"
+
 export m="\033[0;1;31m"
 export y="\033[0;1;34m"
 export yy="\033[0;1;36m"
@@ -521,11 +625,11 @@ echo -e "  \e[$yy Free RAM             : $fram MB"
 echo -e "  \e[$yy System Uptime        : $uptime"
 echo -e "  \e[$yy Ip Vps/Address       :$xz $IPVPS $xz"
 echo -e "  \e[$yy Domain Name          :$xz $Domen $xz"
-echo -e "  \e[$yy Order ID             :$xz $Nama_Issued_License $xz"
+echo -e "  \e[$yy Order ID             :$xz $username $xz"
 #echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
-echo -e "  \e[$yy Status Update        :$stl"
-echo -e "  $yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" #| lolcat
+echo -e "  \e[$yy Status Update        :$exp $sts"
+echo -e "  $yy Expired Status       :$exp $sts $wh" #| lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$yy     Traffic        Today       Yesterday      Month   $yy"
 echo -e "   \e[$text   Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
