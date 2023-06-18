@@ -594,8 +594,8 @@ echo -e "  \e[$yy Domain Name          :$xz $Domen $xz"
 echo -e "  \e[$yy Order ID             :$xz $username $xz"
 #echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
-echo -e "  \e[$yy Status Update        :$stl"
-echo -e "  $yy Expired Status       :$Exp $sts $wh" #| lolcat
+echo -e "  \e[$yy Status Update        : Latest Version"
+echo -e "  $yy Expired Status       :$wh $exp $sts $wh" #| lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$yy     Traffic        Today       Yesterday      Month   $yy"
 echo -e "   \e[$text   Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
@@ -604,7 +604,7 @@ echo -e "   \e[$text   Total${NC}      \e[${text}  $todayd $today_v     $yesterd
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
 #echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m" 
 echo -e "                        $BOLD $UNDERLINE LIST ACCOUNTS " | lolcat
-echo -e " \e[$yy        SSH      Vmess     Vless    Trojan-Ws   SOCK-WS        "  
+echo -e " \e[$yy        SSH      Vmess     Vless      Trojan    SOCK-WS        "  
 echo -e " \e[$below         $sssh         $vm         $vll         $trr          $ssk            \e[0m "
 echo -e " \e[$yy      Account   Account   Account    Account    Account$yy "  
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
