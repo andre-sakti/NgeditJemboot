@@ -11,6 +11,25 @@ grenbo="\e[92;1m"
 YELL='\033[0;33m'
 IWhite='\033[0;97m'       # White
 wh="\033[0;1;33m"
+BIBlack='\033[1;90m'      # Black
+BIRed='\033[1;91m'        # Red
+BIGreen='\033[1;92m'      # Green
+BIYellow='\033[1;93m'     # Yellow
+BIBlue='\033[1;94m'       # Blue
+BIPurple='\033[1;95m'     # Purple
+BICyan='\033[1;96m'       # Cyan
+BIWhite='\033[1;97m'      # White
+UWhite='\033[4;37m'       # White
+On_IPurple='\033[0;105m'  #
+On_IRed='\033[0;101m'
+IBlack='\033[0;90m'       # Black
+IRed='\033[0;91m'         # Red
+IGreen='\033[0;92m'       # Green
+IYellow='\033[0;93m'      # Yellow
+IBlue='\033[0;94m'        # Blue
+IPurple='\033[0;95m'      # Purple
+ICyan='\033[0;96m'        # Cyan
+IWhite='\033[0;97m'       # White
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
 IPVPS=$(curl -s ipv4.icanhazip.com)
@@ -148,28 +167,28 @@ echo -e " ${IPurple}╭═══════════════════
 echo -e " ${IPurple}│$IWhite\033[41m                    SYSTEM INFORMATION                    $IWhite${IPurple}│$IWhite"
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e " ${IPurple}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${IPurple}│$NC System OS${NC}     $IPurple=$NC $MODEL${NC}"
-echo -e " ${IPurple}│$NC IP VPS${NC}        $IPurple=$NC $IPVPS${NC}"
-echo -e " ${IPurple}│$NC Domain${NC}        $IPurple=$NC $domain${NC}"
-echo -e " ${IPurple}│$NC Expiry script${NC} $IPurple=$green $certifacate ${NC}Days"
+echo -e " ${IPurple}│$BICyan System OS${NC}     $IPurple=$BICyan $MODEL${NC}"
+echo -e " ${IPurple}│$BICyan IP VPS${NC}        $IPurple=$BICyan $IPVPS${NC}"
+echo -e " ${IPurple}│$BICyan Domain${NC}        $IPurple=$BICyan $domain${NC}"
+echo -e " ${IPurple}│$BICyan Expiry script${NC} $IPurple=$wh $certifacate ${wh}Days"
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e "         SSH : $status_ssh" "         NGINX : $status_nginx" "         XRAY : $status_xray         $NC" 
+echo -e "        $BICyan SSH $BICyan: $status_ssh" "        $BICyan NGINX $BICyan: $status_nginx" "        $BICyan XRAY $BICyan: $status_xray         $NC" 
 echo -e " ${IPurple}╭══════════════════════════════════════════════════════════╮${NC}"
 echo -e " ${IPurple}│                                                          │"
-echo -e " ${IPurple}│$wh [${wh}01${wh}] SSH MENU     ${IPurple}│$wh [${wh}07${wh}] DELL ALL EXP ${IPurple}│$wh [${wh}13${wh}] BCKP/RSTR   $wh${IPurple}│$wh" 
-echo -e " ${IPurple}│$wh [${wh}02${wh}] VMESS MENU   ${IPurple}│$wh [${wh}08${wh}] AUTOREBOOT  ${IPurple} │$wh [${wh}14${wh}] REBOOT      $wh${IPurple}│$wh"    
-echo -e " ${IPurple}│$wh [${wh}03${wh}] VLESS MENU   ${IPurple}│$wh [${wh}09${wh}] INFO PORT   ${IPurple} │$wh [${wh}15${wh}] RESTART     $wh${IPurple}│$wh"   
-echo -e " ${IPurple}│$wh [${wh}04${wh}] TROJAN MENU  ${IPurple}│$wh [${wh}10${wh}] SPEEDTEST   ${IPurple} │$wh [${wh}16${wh}] DOMAIN      $wh${IPurple}│$wh" 
-echo -e " ${IPurple}│$wh [${wh}05${wh}] SHADOW MENU  ${IPurple}│$wh [${wh}11${wh}] RUNNING     ${IPurple} │$wh [${wh}17${wh}] CERT SSL    $wh${IPurple}│$wh"
-echo -e " ${IPurple}│$wh [${wh}06${wh}] TRIAL MENU   ${IPurple}│$wh [${wh}12${wh}] CLEAR LOG   ${IPurple} │ $wh[${wh}18${wh}] CLEAR CACHE$wh${IPurple} │$wh"
+echo -e " ${IPurple}│$BICyan [${wh}01${BICyan}]$BICyan SSH MENU     ${IPurple}│$BICyan [${wh}07${BICyan}]$BICyan DELL ALL EXP ${IPurple}│$BICyan [${wh}13${BICyan}]$BICyan BCKP/RSTR   ${IPurple}│$wh" 
+echo -e " ${IPurple}│$BICyan [${wh}02${BICyan}]$BICyan VMESS MENU   ${IPurple}│$BICyan [${wh}08${BICyan}]$BICyan AUTOREBOOT  ${IPurple} │$BICyan [${wh}14${BICyan}]$BICyan REBOOT      ${IPurple}│$wh"    
+echo -e " ${IPurple}│$BICyan [${wh}03${BICyan}]$BICyan VLESS MENU   ${IPurple}│$BICyan [${wh}09${BICyan}]$BICyan INFO PORT   ${IPurple} │$BICyan [${wh}15${BICyan}]$BICyan RESTART     ${IPurple}│$wh"   
+echo -e " ${IPurple}│$BICyan [${wh}04${BICyan}]$BICyan TROJAN MENU  ${IPurple}│$BICyan [${wh}10${BICyan}]$BICyan SPEEDTEST   ${IPurple} │$BICyan [${wh}16${BICyan}]$BICyan DOMAIN      ${IPurple}│$wh" 
+echo -e " ${IPurple}│$BICyan [${wh}05${BICyan}]$BICyan SHADOW MENU  ${IPurple}│$BICyan [${wh}11${BICyan}]$BICyan RUNNING     ${IPurple} │$BICyan [${wh}17${BICyan}]$BICyan CERT SSL    ${IPurple}│$wh"
+echo -e " ${IPurple}│$BICyan [${wh}06${BICyan}]$BICyan TRIAL MENU   ${IPurple}│$BICyan [${wh}12${BICyan}]$BICyan CLEAR LOG   ${IPurple} │$BICyan [${wh}18${BICyan}]$BICyan CLEAR CACHE ${IPurple}│$wh"
 echo -e " ${IPurple}│                                                          │"
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
-echo -e "               SSH = $sssh$wh" "  VMESS = $vm$wh"  " VLESS = $vll$wh"
-echo -e "                 TROJAN = $trr$wh" "SHADOWSICKS = $ssk$wh"
+echo -e "               "                    "SSH = $sssh" "  VMESS = $vm"  " VLESS = $vll" | lolcat
+echo -e "                 "                      "TROJAN = $trr" "SHADOWSOCKS = $ssk" | lolcat
 echo -e " ${IPurple}╭══════════════════════════════════════════════════════════╮${NC}"
-echo -e " ${IPurple}│$NC Version       ${IPurple}=$NC V3.0"
-echo -e " ${IPurple}│$NC User          ${IPurple}=$NC $username"
-echo -e " ${IPurple}│$NC Script Status ${IPurple}=$NC $exp $sts "
+echo -e " ${IPurple}│$BICyan Version       ${IPurple}=$BICyan V3.0"
+echo -e " ${IPurple}│$BICyan User          ${IPurple}=$BICyan $username"
+echo -e " ${IPurple}│$BICyan Script Status ${IPurple}=$NC $exp $sts  "
 echo -e " ${IPurple}╰══════════════════════════════════════════════════════════╯${NC}"
 echo
 read -p " Select menu : " opt
@@ -595,18 +614,18 @@ echo -e "  \e[$yy Order ID             :$xz $username $xz"
 #echo -e "  \e[$yy Expired Status       :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e "  \e[$yy Provided By          :$yl Script Credit by Andre Sakti $yl"
 echo -e "  \e[$yy Status Update        : Latest Version"
-echo -e "  $yy Expired Status       :$wh $exp $sts $wh" #| lolcat
+echo -e "  $yy Expired Status       :$NC $exp $sts  " #| lolcat
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 echo -e " \e[$yy     Traffic        Today       Yesterday      Month   $yy"
 echo -e "   \e[$text   Download${NC}     \e[${text}$today_tx $today_txv      $yesterday_tx $yesterday_txv     $month_tx $month_txv   \e[0m"
 echo -e "   \e[$text   Upload${NC}       \e[${text}$today_rx $today_rxv      $yesterday_rx $yesterday_rxv     $month_rx $month_rxv   \e[0m"
 echo -e "   \e[$text   Total${NC}      \e[${text}  $todayd $today_v     $yesterday $yesterday_v     $month $month_v  \e[0m "
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
-#echo -e "                       \E[0;41;37m LIST ACCOUNTS \E[0m" 
-echo -e "                        $BOLD $UNDERLINE LIST ACCOUNTS " | lolcat
-echo -e " \e[$yy        SSH      Vmess     Vless      Trojan    SOCK-WS        "  
-echo -e " \e[$below         $sssh         $vm         $vll         $trr          $ssk            \e[0m "
-echo -e " \e[$yy      Account   Account   Account    Account    Account$yy "  
+#echo -e "                      \E[0;41;37m LIST ACCOUNTS \E[0m" 
+echo -e "                       $BOLD $UNDERLINE LIST ACCOUNTS " | lolcat
+echo -e " \e[$yy        SSH      Vmess      Vless      Trojan    SOCK-WS        "  
+echo -e " \e[$below         $sssh          $vm         $vll         $trr          $ssk            \e[0m "
+echo -e " \e[$yy      Account   Account    Account    Account    Account$yy "  
 echo -e " \e[$line╒════════════════════════════════════════════════════════════╕\e[m"
 #echo -e "  \e[   $yyExpired Status :$wh $(cat /etc/${Auther}/license-remaining-active-days.db)$wh Days$wh" | lolcat
 echo -e " \e[$line╘════════════════════════════════════════════════════════════╛\e[m"
